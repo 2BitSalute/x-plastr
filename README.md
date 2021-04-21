@@ -16,3 +16,10 @@ Cross-platform examples of situations in C/C++ code involving ANSI and Unicode s
 - MySQL:
   - [my_wc_t](https://github.com/google/mysql/blob/master/include/m_ctype.h)
   - [Unicode conversion functions](https://github.com/mysql/mysql-server/blob/8.0/strings/mb_wc.h)
+
+## Windows UTF-8 Support
+
+According to the [Microsoft documentation of `setlocale`](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/setlocale-wsetlocale?view=msvc-160#utf-8-support):
+
+> UTF-8 Support
+> Starting in Windows 10 build 17134 (April 2018 Update), the Universal C Runtime supports using a UTF-8 code page. This means that char strings passed to C runtime functions will expect strings in the UTF-8 encoding. To enable UTF-8 mode, use "UTF-8" as the code page when using setlocale. For example, setlocale(LC_ALL, ".utf8") will use the current default Windows ANSI code page (ACP) for the locale and UTF-8 for the code page.
