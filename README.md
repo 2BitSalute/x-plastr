@@ -23,3 +23,23 @@ According to the [Microsoft documentation of `setlocale`](https://docs.microsoft
 
 > UTF-8 Support
 > Starting in Windows 10 build 17134 (April 2018 Update), the Universal C Runtime supports using a UTF-8 code page. This means that char strings passed to C runtime functions will expect strings in the UTF-8 encoding. To enable UTF-8 mode, use "UTF-8" as the code page when using setlocale. For example, setlocale(LC_ALL, ".utf8") will use the current default Windows ANSI code page (ACP) for the locale and UTF-8 for the code page.
+
+## MacOS UTF-8 Support
+
+To list all installed locales, run `locale -a` in the terminal:
+
+```bash
+<...>
+C
+<...>
+en_US
+en_US.ISO8859-1
+en_US.ISO8859-15
+en_US.US-ASCII
+en_US.UTF-8
+<...>
+POSIX
+<...>
+```
+
+The only useful locale for 

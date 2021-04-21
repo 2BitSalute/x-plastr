@@ -1,6 +1,7 @@
-#include <stdio.h>
+#include <stdio.h> // necessary for printf and, on Windows, is sufficient for wprintf
 #include <wchar.h> // necessary on MacOS for wprintf
 #include <locale.h> // necessary on MacOS for setlocale
+#include <string.h> // necessary for strcmp
 
 // Conclusion on MacOS: little difference between printf and wprintf, as long as the right format specifiers are used
 // The only difference I can find, when the locale is set to en_US.UTF-8, is that printf shows warnings for %hc and %hs format specifiers,
@@ -8,15 +9,26 @@
 
 int main(void)
 {
-    // `setlocale` makes wprintf work on MacOS; see https://stackoverflow.com/a/15206743/132042
-    // From the Linux manual: If locale is an empty string, "", each part of the locale that
-    // should be modified is set according to the environment variables.
-    // Note also that I added `export LC_ALL=en_US.UTF-8` to my .profile
-    // Also note: the Windows documentation maintains that ".utf8" should work on Windows, but it
-    // certainly does not work on MacOS. The language specifier is necessary, and the "en_US.UTF-8" format
-    // of the code page is also required to be exactly that. I find that "en_US" alone also works fine on MacOS.
-    setlocale(LC_ALL, "en_US.UTF-8");
-    
+    char *my_locale = setlocale(LC_CTYPE, NULL);
+    const char* c_locale = "C";
+
+    // My output shows 'C' as the initial locale
+    printf("The initial locale is %s\n\n", my_locale);
+
+    if (strcmp(my_locale, c_locale) == 0)
+    {
+        printf("Setting the locale to ensure a UTF-8 code page...\n\n");
+
+        // `setlocale` makes wprintf work on MacOS; see https://stackoverflow.com/a/15206743/132042
+        // From the Linux manual: If locale is an empty string, "", each part of the locale that
+        // should be modified is set according to the environment variables.
+        // Note also that I added `export LC_ALL=en_US.UTF-8` to my .profile
+        // Also note: the Windows documentation maintains that ".utf8" should work on Windows, but it
+        // certainly does not work on MacOS. The language specifier is necessary, and the "en_US.UTF-8" format
+        // of the code page is also required to be exactly that. I find that "en_US" or "zh_HK", etc. alone also work fine on MacOS.
+        setlocale(LC_CTYPE, "zh_HK.UTF-8");
+    }
+
     char ch = 'h';
     const char *string = "computer";
   
