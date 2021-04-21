@@ -1,0 +1,36 @@
+printf (c): h
+printf (hc): h
+printf YA (C): Я
+printf YA (lc): Я
+printf lambda (C): λ
+printf lambda (lc): λ
+
+wprintf (C): h
+wprintf (hc): h
+wprintf YA (c): /
+wprintf YA (C)): Я
+wprintf YA (lc): Я
+wprintf lambda (c): 
+wprintf lambda (C): λ
+wprintf lambda (lc): λ
+
+
+Strings:
+
+printf (s): computer
+printf (hs): computer
+printf lambda (S): ᵬC
+printf lambda (ls): ᵬC
+printf nihongo (S): 日本語
+printf nihongo (ls): 日本語
+
+wprintf (S): 
+wprintf (s): computer
+wprintf (hs): computer
+wprintf lambda (s): l
+wprintf lambda (S): ᵬC
+wprintf lambda (ls): ᵬC
+wprintf nihongo (s): 
+wprintf nihongo (S): 日本語
+wprintf nihongo (ls): 日本語
+
